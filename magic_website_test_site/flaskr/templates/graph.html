@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% block title %}Setup
+<link rel ="stylesheet" type = "text/css" href = "{{url_for('static', filename ='style.css')}}">
+{% endblock %}
+{% block content %}
+<h2>Which card would you like to see nearby values with?</h2>
+<!-- Example single danger button -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+
+<form action="" method="post">
+            <label>Select</label>
+            <input type="text" list = "names" name = "card">
+            <datalist id = "names">
+               {%for elem in names%}  
+                  <option name = "{{elem}}">{{elem}}</option>
+                {%endfor%}
+            </select>
+     </div>
+  </div>
+  <h3>Click here to submit and see results!</h1>
+  <input type="submit" name = "submit">
+   <!-- <div class="dropdown">
+        <button onclick="myFunction()" class="dropbtn">Dropdown</button>
+        <div id="myDropdown" class="dropdown-content">
+          <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()" name="card">
+                {%for elem in names%}  
+                    <a name = "{{elem}}">{{elem}}</a>
+                {%endfor%}
+        </div>
+      </div>
+    <h3>Click here to submit and see results!</h1>
+    <p><input type="submit" name = "submit2"></p>-->
+    <script>
+        /* When the user clicks on the button,
+        toggle between hiding and showing the dropdown content */
+        function myFunction() {
+          document.getElementById("myDropdown").classList.toggle("show");
+        }
+        
+        function filterFunction() {
+          var input, filter, ul, li, a, i;
+          input = document.getElementById("myInput");
+          filter = input.value.toUpperCase();
+          div = document.getElementById("myDropdown");
+          a = div.getElementsByTagName("a");
+          for (i = 0; i < a.length; i++) {
+            txtValue = a[i].textContent || a[i].innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+              a[i].style.display = "";
+            } else {
+              a[i].style.display = "none";
+            }
+          }
+        }
+
+        $('.select2').select2();
+        </script>
+
+    {% if evaluated %}
+        <h2>Encoded Graph</h2>
+        <a href="{{url_for('static', filename= 'images/' +card1+ "-1"+ variable +'.png')}}" target="_blank" rel="noopener noreferrer">
+        <img src="{{url_for('static', filename= 'images/' +card1+ "-1"+ variable +'.png')}}" class="img-fluid" alt="Responsive image">
+        </a>
+        <!-- Example single danger button 
+       <h2>FullGraph</h2>
+        <img src="{{url_for('static', filename= 'images/' +card1+ "4"+ variable +'.png')}}" class="img-fluid" alt="Responsive image">
+      -->
+    {%endif%}
+</form>
+{% endblock %}

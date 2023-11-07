@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+{% block title %}User{% endblock %}
+{% block content %}
+<h1>Choose this to compare card vectors!</h1>
+<form action="" method="post">
+<div>
+    <label>Which comparison?</label>
+    <input type="text" list = "vectors" name = "vector_to_choose">
+    <datalist id = "vectors">
+    <select> 
+        <option value = 0 label = 'color'> color</option>
+        <option value = 1> type</option>
+        <option value = 2> text</option>
+        <option value = 3> flavor</option>
+        <option value = 5> all_encoded</option>
+    </select>
+</div>
+<div>
+    <label>Card1</label>
+    <input type="text" list = "names" name = "card1">
+    <datalist id = "names">
+        <select>
+       {%for elem in names%}  
+          <option name = "{{elem}}">{{elem}}</option>
+        {%endfor%}
+    </select>
+</div>
+<div>
+    <label>Card2</label>
+    <input type="text" list = "names" name = "card2">
+    <datalist id = "names">
+       {%for elem in names%}  
+          <option name = "{{elem}}">{{elem}}</option>
+        {%endfor%}
+    </select>
+</div>
+<h3>Click here to submit and see results!</h1>
+<input type="submit" name = "submit">
+<!-- <div class="dropdown">
+<button onclick="myFunction()" class="dropbtn">Dropdown</button>
+<div id="myDropdown" class="dropdown-content">
+  <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()" name="card">
+        {%for elem in names%}  
+            <a name = "{{elem}}">{{elem}}</a>
+        {%endfor%}
+</div>
+</div>
+<h3>Click here to submit and see results!</h1>
+<p><input type="submit" name = "submit2"></p>-->
+<script>
+/* When the user clicks on the button,
+toggle between hiding and showing the dropdown content */
+function myFunction() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+
+function filterFunction() {
+  var input, filter, ul, li, a, i;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  div = document.getElementById("myDropdown");
+  a = div.getElementsByTagName("a");
+  for (i = 0; i < a.length; i++) {
+    txtValue = a[i].textContent || a[i].innerText;
+    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+      a[i].style.display = "";
+    } else {
+      a[i].style.display = "none";
+    }
+  }
+}
+
+$('.select2').select2();
+</script>
+{% if evaluated %}
+<h1>Distance for {{card_1}} and {{card_2}}</h1>
+<h2>{{result}}</h2>\
+
+<a href="{{url_for('static', filename= 'images//card_images//' + card_1 +'.jpeg')}}" target="_blank" rel="noopener noreferrer">
+<img src="{{url_for('static', filename= 'images//card_images//' + card_1 +'.jpeg')}}" class="img-fluid" alt="card1">
+</a>
+<a href="{{url_for('static', filename= 'images//card_images//'+ card_2 +'.jpeg')}}" target="_blank" rel="noopener noreferrer">
+<img src="{{url_for('static', filename= 'images//card_images//'+ card_2 +'.jpeg')}}" class="img-fluid" alt="card2">
+</a>
+{%endif%}
+</form>
+{% endblock %}

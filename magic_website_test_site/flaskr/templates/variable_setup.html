@@ -1,0 +1,309 @@
+{% extends "base.html" %}
+{% block title %}Setup
+<link rel ="stylesheet" type = "text/css" href = "{{url_for('static', filename ='style.css')}}">
+
+{% endblock %}
+{% block content %}
+<h2>Think about how would you like to group your data?</h1>
+<h3>First choose which cards you would like to look through</h3>
+<h5>Which Format?</h5>
+<!-- Example single danger button -->
+
+<html lang="en">
+<head>
+    <!-- Head content -->
+</head>
+<body>
+
+<img id="loadingGif" src="{{ url_for('static', filename='images//loading_gif.gif') }}" style="display:none;" alt="Loading...">
+
+
+<form action="" method="post" id = "myForm">
+    <div class="form-check" style = "display: inline-block">
+        <input class="form-check-input" type="checkbox" value="Standard" id="FormatCheck1" name = "Formatcheck">
+        <label class="form-check-label" for="defaultCheck1">
+            Standard
+        </label>
+    </div>
+    <div class="form-check" style = "display: inline-block">
+        <input class="form-check-input" type="checkbox" value="Pioneer" id="FormatCheck2" name = "Formatcheck">
+        <label class="form-check-label" for="defaultCheck1">
+            Pioneer
+        </label>
+    </div>
+    <div class="form-check"  style = "display: inline-block">
+        <input class="form-check-input" type="checkbox" value="Modern" id="FormatCheck3" name = "Formatcheck">
+        <label class="form-check-label" for="defaultCheck1">
+            Modern
+        </label>
+    </div>
+    <div class="form-check"  style = "display: inline-block">
+        <input class="form-check-input" type="checkbox" value="Legacy" id="FormatCheck4" name = "Formatcheck">
+        <label class="form-check-label" for="defaultCheck1">
+            Legacy
+        </label>
+    </div>
+    <div class="form-check"  style = "display: inline-block">
+        <input class="form-check-input" type="checkbox" value="Commander" id="FormatCheck5" name = "Formatcheck">
+        <label class="form-check-label" for="defaultCheck1">
+            Commander
+        </label>
+    </div>
+    <h5>What Colors?</h5>
+    <!-- Example single danger button -->
+    <div class="form-check"  style = "display: inline-block">
+        <input class="form-check-input" type="checkbox" value="White" id="ColorCheck1" name = "WhichColorcheck">
+        <label class="form-check-label" for="defaultCheck1">
+            White
+        </label>
+    </div>
+    <div class="form-check"  style = "display: inline-block">
+        <input class="form-check-input" type="checkbox" value="Blue" id="ColorCheck2" name = "WhichColorcheck">
+        <label class="form-check-label" for="defaultCheck1">
+            Blue
+        </label>
+    </div>
+    <div class="form-check"  style = "display: inline-block">
+        <input class="form-check-input" type="checkbox" value="Black" id="ColorCheck3" name = "WhichColorcheck">
+        <label class="form-check-label" for="defaultCheck1">
+            Black
+        </label>
+    </div>
+    <div class="form-check"  style = "display: inline-block">
+        <input class="form-check-input" type="checkbox" value="Red" id="ColorCheck4" name = "WhichColorcheck">
+        <label class="form-check-label" for="defaultCheck1">
+            Red
+        </label>
+    </div>
+    <div class="form-check"  style = "display: inline-block">
+        <input class="form-check-input" type="checkbox" value="Green" id="ColorCheck5" name = "WhichColorcheck">
+        <label class="form-check-label" for="defaultCheck1">
+            Green
+        </label>
+    </div>
+    <div class="form-check"  style = "display: inline-block">
+        <input class="form-check-input" type="checkbox" value="Colorless" id="ColorCheck6" name = "WhichColorcheck">
+        <label class="form-check-label" for="defaultCheck1">
+            Colorless
+        </label>
+    </div>
+    <h5>What Rarities?</h5>
+    <!-- Example single danger button -->
+    <div class="form-check"  style = "display: inline-block">
+        <input class="form-check-input" type="checkbox" value="Common" id="RarityCheck1" name = "Raritycheck">
+        <label class="form-check-label" for="defaultCheck1">
+            Common
+        </label>
+        </div>
+        <div class="form-check"  style = "display: inline-block">
+        <input class="form-check-input" type="checkbox" value="Uncommon" id="RarityCheck2" name = "Raritycheck">
+        <label class="form-check-label" for="defaultCheck1">
+            Uncommon
+        </label>
+    </div>
+    <div class="form-check"  style = "display: inline-block">
+        <input class="form-check-input" type="checkbox" value="Rare" id="RarityCheck3" name = "Raritycheck">
+        <label class="form-check-label" for="defaultCheck1">
+            Rare
+        </label>
+    </div>
+    <div class="form-check"  style = "display: inline-block">
+        <input class="form-check-input" type="checkbox" value="Mythic" id="RarityCheck4" name = "Raritycheck">
+        <label class="form-check-label" for="defaultCheck1">
+            Mythic
+        </label>
+        </div>
+    <h3>Now please think about how important the grouping should be!</h3>
+    <!-- Example split danger button -->
+    <div class="btn-group">
+        <button type="button" class="btn btn-success">Color Similarity</button>
+        <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <span class="sr-only">Toggle Dropdown</span>
+        </button>
+        <div class="dropdown-menu"><a class="form-check">
+            <input class="form-check-input" type="checkbox" value=1.0 id="ColorSim5" name = "Colorcheck">
+            <label class="form-check-label" type="checkbox" for="ColorSim5" >
+                Most important (5/5)
+            </label>
+            </a>
+            <a class="form-check">
+                <input class="form-check-input" type="checkbox" value=.8 id="ColorSim4" name = "Colorcheck">
+                <label class="form-check-label"  for="ColorSim4">
+                    Very Important (4/5)
+                </label>
+            </a>
+            <a class="form-check">
+                <input class="form-check-input" type="checkbox" value=.6 id="ColorSim3" name = "Colorcheck">
+                <label class="form-check-label"  for="ColorSim3">
+                    Important (3/5)
+                </label>
+            </a>
+            <a class="form-check">
+                <input class="form-check-input" type="checkbox" value=.4 id="ColorSim2" name = "Colorcheck">
+                <label class="form-check-label"  for="ColorSim2">
+                    Kind of important (2/5)
+                </label>
+            </a>
+            <a class="form-check">
+                <input class="form-check-input" type="checkbox" value=.2 id="ColorSim1" name = "Colorcheck">
+                <label class="form-check-label"  for="ColorSim1">
+                    Not very important (1/5)
+                </label>
+            </a>
+            <a class="form-check">
+                <input class="form-check-input" type="checkbox" value=0.0 id="ColorSim0" name = "Colorcheck">
+                <label class="form-check-label"  for="ColorSim0">
+                    Don't care about (0/5)
+                </label>
+            </a>
+    </div>
+    </div>
+    <div class="btn-group">
+        <button type="button" class="btn btn-danger">Type Similarity</button>
+        <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <span class="sr-only">Toggle Dropdown</span>
+        </button>
+        <div class="dropdown-menu">
+            <a class="form-check">
+                <input class="form-check-input" type="checkbox" value=1.0 id="TypeSim5" name = "Typecheck">
+                <label class="form-check-label" for="defaultCheck1">
+                    Most important (5/5)
+                </label>
+            </a>
+            <a class="form-check">
+                <input class="form-check-input" type="checkbox" value=.8 id="TypeSim4" name = "Typecheck">
+                <label class="form-check-label" for="defaultCheck1">
+                    Very Important (4/5)
+                </label>
+            </a>
+            <a class="form-check">
+                <input class="form-check-input" type="checkbox" value=.6 id="TypeSim3" name = "Typecheck">
+                <label class="form-check-label" for="defaultCheck1">
+                    Important (3/5)
+                </label>
+            </a>
+            <a class="form-check">
+                <input class="form-check-input" type="checkbox" value=.4 id="TypeSim2" name = "Typecheck">
+                <label class="form-check-label" for="defaultCheck1">
+                    Kind of important (2/5)
+                </label>
+            </a>
+            <a class="form-check">
+                <input class="form-check-input" type="checkbox" value=.2 id="TypeSim1" name = "Typecheck">
+                <label class="form-check-label" for="defaultCheck1">
+                    Not very important (1/5)
+                </label>
+            </a>
+            <a class="form-check">
+                <input class="form-check-input" type="checkbox" value=0.0 id="TypeSim0" name = "Typecheck">
+                <label class="form-check-label" for="defaultCheck1">
+                    Don't care about (0/5)
+                </label>
+            </a>
+    </div>
+    </div>
+
+    <div class="btn-group" this.style.color = "#000'">
+        <button type="button" class="btn btn-warning">Text Similarity</button>
+        <button type="button" class="btn btn-warning dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <span class="sr-only">Toggle Dropdown</span>
+        </button>
+        <div class="dropdown-menu">
+            <a class="form-check">
+                <input class="form-check-input" type="checkbox" value=1.0 id="TextSim5" name = "Textcheck">
+                <label class="form-check-label" for="defaultCheck1">
+                    Most important (5/5)
+                </label>
+            </a>
+            <a class="form-check">
+                <input class="form-check-input" type="checkbox" value=.8 id="TextSim4" name = "Textcheck">
+                <label class="form-check-label" for="defaultCheck1">
+                    Very Important (4/5)
+                </label>
+            </a>
+            <a class="form-check">
+                <input class="form-check-input" type="checkbox" value=.6 id="TextSim3" name = "Textcheck">
+                <label class="form-check-label" for="defaultCheck1">
+                    Important (3/5)
+                </label>
+            </a>
+            <a class="form-check">
+                <input class="form-check-input" type="checkbox" value=.4  id="TextSim2" name = "Textcheck">
+                <label class="form-check-label" for="defaultCheck1">
+                    Kind of important (2/5)
+                </label>
+            </a>
+            <a class="form-check">
+                <input class="form-check-input" type="checkbox" value=.2 id="TextSim1" name = "Textcheck">
+                <label class="form-check-label" for="defaultCheck1">
+                    Not very important (1/5)
+                </label>
+            </a>
+            <a class="form-check">
+                <input class="form-check-input" type="checkbox" value=0.0 id="TextSim0" name = "Textcheck">
+                <label class="form-check-label" for="defaultCheck1">
+                    Don't care about (0/5)
+                </label>
+            </a>
+    </div>
+    </div>
+
+    <div class="btn-group">
+        <button type="button" class="btn ">Flavor Similarity</button>
+        <button type="button" class="btn dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <span class="sr-only">Toggle Dropdown</span>
+        </button>
+        <div class="dropdown-menu">
+            <a class="form-check">
+                <input class="form-check-input" type="checkbox" value=1.0 id="DecklistSim5" name = "Deckcheck">
+                <label class="form-check-label" for="defaultCheck1">
+                    Most important (5/5)
+                </label>
+            </a>
+            <a class="form-check">
+                <input class="form-check-input" type="checkbox" value=.8 id="DecklistSim4" name = "Deckcheck">
+                <label class="form-check-label" for="defaultCheck1">
+                    Very Important (4/5)
+                </label>
+            </a>
+            <a class="form-check">
+                <input class="form-check-input" type="checkbox" value=.6 id="DecklistSim3" name = "Deckcheck">
+                <label class="form-check-label" for="defaultCheck1">
+                    Important (3/5)
+                </label>
+            </a>
+            <a class="form-check">
+                <input class="form-check-input" type="checkbox" value=.4 id="DecklistSim2" name = "Deckcheck">
+                <label class="form-check-label" for="defaultCheck1">
+                    Kind of important (2/5)
+                </label>
+            </a>
+            <a class="form-check">
+                <input class="form-check-input" type="checkbox" value=.2 id="DecklistSim1" name = "Deckcheck">
+                <label class="form-check-label" for="defaultCheck1">
+                    Not very important (1/5)
+                </label>
+            </a>
+            <a class="form-check">
+                <input class="form-check-input" type="checkbox" value=0 id="DecklistSim0" name = "Deckcheck">
+                <label class="form-check-label" for="defaultCheck1">
+                    Don't care about (0/5)
+                </label>
+            </a>
+    </div>
+    </div>
+    <h3>Click here to submit and see results!</h1>
+        <input type="submit" name = "submit" value ="Submit">
+</form>
+
+ <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            document.getElementById('myForm').addEventListener('submit', function() {
+                // If the element that triggered the submit event is the submit button
+                    // Show the loading GIF
+                    document.getElementById('loadingGif').style.display = 'block';
+            });
+        });
+        </script>
+    </body>
+{% endblock %}

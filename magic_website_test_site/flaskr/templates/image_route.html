@@ -1,0 +1,6 @@
+{% extends "base.html" %}
+{% block title %}User{% endblock %}
+{% block content %}
+<img src="{{url_for('static', filename= 'images//card_images//' + image_id +'.jpeg')}}" class="img-fluid" alt="Responsive image">
+{{ relevant }}
+{% endblock %}
